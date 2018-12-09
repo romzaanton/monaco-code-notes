@@ -29,6 +29,17 @@ export function createEditor(selector: string, language: string, mockup: string)
     monacoEditor = monaco.editor.create(viewContainer, {
       value: mockup,
       language,
+      folding: true,
+      cursorStyle: 'line',
+      cursorWidth: 10,
+      cursorBlinking: 'solid',
+      overviewRulerBorder: true,
+      fixedOverflowWidgets: true,
+      disableLayerHinting: true,
+      selectionHighlight: true,
+      roundedSelection: true,
+      multiCursorMergeOverlapping: false,
+      ariaLabel: '|',
       theme: 'vs-dark',
     });
   } else {

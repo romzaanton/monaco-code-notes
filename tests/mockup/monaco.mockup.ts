@@ -10,13 +10,18 @@ export const NotesTree = [
   {
     id: 0,
     name: "Shortcuts",
+    owner: 'Me',
+    updated: new Date(2018, 12 , 1),
+    sharedWith: 'Only me',
+    order: 0,
     children: [
       {
         id: 1,
         name: "Multi threading C++",
         language: "cpp",
-        notebook: 'Shortcuts',
+        notebookId: '0',
         type: 0,
+        order: 0,
         data: `
         template <typename T>
         void printSomething() {
@@ -27,8 +32,9 @@ export const NotesTree = [
       { id: 2,
         name: "Cache friendly code",
         language: "cpp",
-        notebook: 'Shortcuts',
+        notebookId: 0,
         type: 0,
+        order: 0,
         data: `
         void printSomething() {
           std::cout << "Something" << std::endl;
@@ -40,13 +46,18 @@ export const NotesTree = [
   {
     id: 3,
     name: "Notebooks",
+    owner: 'Me',
+    updated: new Date(2018, 12 , 1),
+    sharedWith: 'Only me',
+    order: 0,
     children: [
       { 
         id: 4, 
         name: "Javascript is simple",
         language: "javascript",
-        notebook: 'Notebooks',
+        notebookId: 3,
         type: 0,
+        order: 0,
         data: `function x() {
         \tconsole.log('Hello world!')
         }`,
@@ -54,8 +65,9 @@ export const NotesTree = [
       { id: 5, 
         name: "Javascript is very simple",
         language: "javascript",
-        notebook: 'Notebooks',
+        notebookId: 3,
         type: 0,
+        order: 0,
         data: `function x() {
         \tconsole.log('Hello world!')
         }`,

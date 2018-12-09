@@ -5,7 +5,7 @@
     <v-content>
       <v-container pa-0 ma-0 fluid grid-list-md>
         <v-layout row justify-start fill-height pa-0 ma-0>
-          <app-code-note></app-code-note>
+          <router-view></router-view>
         </v-layout>
       </v-container>
     </v-content>
