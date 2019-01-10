@@ -16,14 +16,12 @@
 import { Component, Vue } from 'vue-property-decorator';
 import AppSideBar from '@/components/TheSideBar.vue';
 import AppToolBar from '@/components/TheToolBar.vue';
-import AppCodeNote from '@/components/BaseCodeNote.vue';
 
 @Component({
   name: 'app-home',
   components: {
     AppSideBar,
     AppToolBar,
-    AppCodeNote,
   },
 })
 export default class Home extends Vue { }

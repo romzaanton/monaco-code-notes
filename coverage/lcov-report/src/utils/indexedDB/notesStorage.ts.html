@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/utils/indexedDB/notesStorage.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/utils/indexedDB</a> notesStorage.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.79% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>21/142</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>21/140</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NoteType, Note, Notebook } from '@/utils/orm.models';
+import { NotesTree } from '../../../tests/mockup/monaco.mockup';
+&nbsp;
+const notebookStorage = 'Notebooks';
+&nbsp;
+interface AppEventTargetIDB extends EventTarget {
+  result: any;
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >isAvailableIndexedDb(</span>): boolean {
+<span class="cstat-no" title="statement not covered" >  return window.indexedDB !== undefined;</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >getMainDb(</span>): Promise&lt;IDBDatabase&gt; {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (isAvailableIndexedDb) {</span>
+      const request = <span class="cstat-no" title="statement not covered" >indexedDB.open(notebookStorage, 1) as IDBOpenDBRequest;</span>
+<span class="cstat-no" title="statement not covered" >      if (request) {</span>
+<span class="cstat-no" title="statement not covered" >        request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          reject(new Error(`IDBOpenDBRequest error ${ev.target}`));</span>
+        };
+<span class="cstat-no" title="statement not covered" >        request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          resolve((ev.target as AppEventTargetIDB).result as IDBDatabase);</span>
+        };
+<span class="cstat-no" title="statement not covered" >        request.onupgradeneeded = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >          createObjectStores((ev.target as AppEventTargetIDB).result as IDBDatabase);</span>
+        };
+      }
+    } else {
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Your browser does not support IndexedDB`));</span>
+    }
+  });
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >createObjectStores(</span>db: IDBDatabase) {
+  const notebooksStore = <span class="cstat-no" title="statement not covered" >db.createObjectStore('notebooks', {</span>
+    keyPath: 'id',
+    autoIncrement: true,
+  });
+<span class="cstat-no" title="statement not covered" >  notebooksStore.createIndex('name', 'name', { unique: false });</span>
+  const notesStore = <span class="cstat-no" title="statement not covered" >db.createObjectStore('notes', {</span>
+    keyPath: 'id',
+    autoIncrement: true,
+  });
+<span class="cstat-no" title="statement not covered" >  notesStore.createIndex('name', 'name', { unique: false });</span>
+  const recycle = <span class="cstat-no" title="statement not covered" >db.createObjectStore('recycle', {</span>
+    keyPath: 'recycleId',
+    autoIncrement: true,
+  });
+<span class="cstat-no" title="statement not covered" >  recycle.createIndex('name', 'name', { unique: false });</span>
+<span class="cstat-no" title="statement not covered" >  recycle.createIndex('id', 'id', { unique: false });</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >saveNotebookToStore(</span>notebook: Notebook) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+<span class="cstat-no" title="statement not covered" >  if (db.objectStoreNames.contains(notebook.name)) {</span>
+<span class="cstat-no" title="statement not covered" >    return;</span>
+  }
+  const request = <span class="cstat-no" title="statement not covered" >db</span>
+    .transaction('notebooks', 'readwrite')
+    .objectStore('notebooks')
+    .add(notebook);
+<span class="cstat-no" title="statement not covered" >  request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    throw new Error(`IDBRequest error ${ev.target}`);</span>
+  };
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getAllNotebooks(</span>): Promise&lt;Notebook[]&gt; {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = <span class="cstat-no" title="statement not covered" >await getAllDataFromIDB(db, 'notebooks') as Notebook[];</span>
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getAllNotes(</span>): Promise&lt;Note[]&gt; {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = <span class="cstat-no" title="statement not covered" >await getAllDataFromIDB(db, 'notes') as Note[];</span>
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getAllRecycleNotes(</span>): Promise&lt;Note[]&gt; {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = <span class="cstat-no" title="statement not covered" >await getAllDataFromIDB(db, 'recycle') as Note[];</span>
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getAllNotebookKeys(</span>): Promise&lt;number[]&gt; {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = (<span class="cstat-no" title="statement not covered" >await getAllKeysFromIDB(db, 'notebooks'))</span> as number[];
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getAllNoteKeys(</span>): Promise&lt;Note[]&gt; {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = (<span class="cstat-no" title="statement not covered" >await getAllKeysFromIDB(db, 'notes'))</span> as Note[];
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >getAllDataFromIDB(</span>db: IDBDatabase, objStore: string) {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const request = <span class="cstat-no" title="statement not covered" >db.transaction(objStore, 'readonly')</span>
+    .objectStore(objStore).getAll();
+<span class="cstat-no" title="statement not covered" >    request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      resolve((ev.target as AppEventTargetIDB).result as any);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Get all data request error ${ev.target}`));</span>
+    };
+  });
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >getAllKeysFromIDB(</span>db: IDBDatabase, objStore: string) {
+<span class="cstat-no" title="statement not covered" >  return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const request = <span class="cstat-no" title="statement not covered" >db.transaction(objStore, 'readonly')</span>
+    .objectStore(objStore).getAllKeys();
+<span class="cstat-no" title="statement not covered" >    request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      resolve((ev.target as AppEventTargetIDB).result as any);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Get all data request error ${ev.target}`));</span>
+    };
+  });
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >getItemFromStore(</span>id: number | string, store: string) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const request = <span class="cstat-no" title="statement not covered" >db.transaction(store, 'readonly')</span>
+    .objectStore(store).get(id);
+<span class="cstat-no" title="statement not covered" >    request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      resolve((ev.target as AppEventTargetIDB).result as any);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Get item by id ${name} from store ${store} cause error ${ev.target}`));</span>
+    };
+  });
+<span class="cstat-no" title="statement not covered" >  return data;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >saveItemToStore(</span>item: Note | Notebook, store: string) {
+    const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+    const data = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+      const request = <span class="cstat-no" title="statement not covered" >db</span>
+        .transaction(store, 'readwrite')
+        .objectStore(store)
+        .add(item);
+<span class="cstat-no" title="statement not covered" >      request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+        const result = (<span class="cstat-no" title="statement not covered" >ev.target as AppEventTargetIDB).result as any;</span>
+<span class="cstat-no" title="statement not covered" >        resolve(result);</span>
+      };
+<span class="cstat-no" title="statement not covered" >      request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        throw new Error(`Add item by id ${item.id} to store ${store} cause error ${ev.target}`);</span>
+      };
+    });
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >notebookIsUnique(</span>name: string) {
+  const item = <span class="cstat-no" title="statement not covered" >await getItemFromStore(name, 'notebooks');</span>
+<span class="cstat-no" title="statement not covered" >  return item === undefined;</span>
+}
+&nbsp;
+export function <span class="fstat-no" title="function not covered" >functionSaveTestMockupToStore(</span>) {
+<span class="cstat-no" title="statement not covered" >    NotesTree.forEach(<span class="fstat-no" title="function not covered" >async</span> (notebook) =&gt; {</span>
+        const notebookExists = <span class="cstat-no" title="statement not covered" >await getItemFromStore(notebook.id, 'notebooks');</span>
+<span class="cstat-no" title="statement not covered" >        if (!notebookExists) {</span>
+<span class="cstat-no" title="statement not covered" >            saveItemToStore(</span>
+                {
+                  id: notebook.id,
+                  name: notebook.name,
+                  owner: notebook.owner,
+                  updated: notebook.updated,
+                  sharedWith: notebook.sharedWith,
+                  order: notebook.order,
+                },
+                'notebooks',
+            );
+<span class="cstat-no" title="statement not covered" >            notebook.children.forEach(<span class="fstat-no" title="function not covered" >(n</span>ote) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                saveItemToStore(</span>
+                    {
+                      id: note.id,
+                      name: note.name,
+                      notebookId: notebook.id,
+                      data: note.data,
+                      type: note.type,
+                      language: note.language,
+                      order: notebook.order,
+                    },
+                    'notes',
+                );
+            });
+        }
+    });
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >createNewNotebookFromString(</span>name: string): Promise&lt;Notebook&gt; {
+  const notes = <span class="cstat-no" title="statement not covered" >await getAllNotebookKeys() as number[];</span>
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    id: notes[notes.length - 1] + 1,
+    name,
+    order: 0,
+    owner: 'Me',
+    updated: new Date(Date.now()),
+  };
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >deleteNotebookFromStore(</span>item: Notebook) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const deleted = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const transaction = <span class="cstat-no" title="statement not covered" >db.transaction('notebooks', 'readwrite')</span>
+    .objectStore('notebooks').delete(item.id);
+<span class="cstat-no" title="statement not covered" >    transaction.onsuccess = <span class="fstat-no" title="function not covered" >() </span>=&gt; <span class="cstat-no" title="statement not covered" >resolve(true);</span></span>
+<span class="cstat-no" title="statement not covered" >    transaction.onerror = transaction.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Delete notebook id = ${item.id} transaction failed ${ev.target}`));</span>
+    };
+  });
+<span class="cstat-no" title="statement not covered" >  return deleted;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >saveNoteToStore(</span>note: Note) {
+  const existingNote = <span class="cstat-no" title="statement not covered" >getItemFromStore(note.id, 'notes');</span>
+<span class="cstat-no" title="statement not covered" >  if (existingNote) {</span>
+<span class="cstat-no" title="statement not covered" >    updateExistingNote(note);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    saveItemToStore(note, 'notes');</span>
+  }
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >updateExistingNote(</span>note: Note) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const updated = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const objectStore = <span class="cstat-no" title="statement not covered" >db.transaction(['notes'], 'readwrite').objectStore('notes');</span>
+    const request = <span class="cstat-no" title="statement not covered" >objectStore.get('444-44-4444');</span>
+    const onerror = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Update note id = ${note.id} request failed ${ev.target}`));</span>
+    };
+<span class="cstat-no" title="statement not covered" >    request.onerror = onerror;</span>
+<span class="cstat-no" title="statement not covered" >    request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+      const storedNote = (<span class="cstat-no" title="statement not covered" >ev.target as AppEventTargetIDB).result as Note;</span>
+      const updatedNote = <span class="cstat-no" title="statement not covered" >Object.assign({}, storedNote, note);</span>
+      const requestUpdate = <span class="cstat-no" title="statement not covered" >objectStore.put(updatedNote);</span>
+<span class="cstat-no" title="statement not covered" >      requestUpdate.onerror = onerror;</span>
+<span class="cstat-no" title="statement not covered" >      requestUpdate.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>vUpdate: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        resolve(true);</span>
+      };
+    };
+  });
+<span class="cstat-no" title="statement not covered" >  return updated;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >deleteExistingNote(</span>id: number) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const deleted = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const transaction = <span class="cstat-no" title="statement not covered" >db.transaction('notes', 'readwrite')</span>
+    .objectStore('notes').delete(id);
+<span class="cstat-no" title="statement not covered" >    transaction.onsuccess = <span class="fstat-no" title="function not covered" >() </span>=&gt; <span class="cstat-no" title="statement not covered" >resolve(true);</span></span>
+<span class="cstat-no" title="statement not covered" >    transaction.onerror = transaction.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      reject(new Error(`Delete note id = ${id} transaction failed ${ev.target}`));</span>
+    };
+  });
+<span class="cstat-no" title="statement not covered" >  return deleted;</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >moveNoteToRecycleBin(</span>note: Note) {
+  const db = <span class="cstat-no" title="statement not covered" >await getMainDb();</span>
+  const data = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
+    const request = <span class="cstat-no" title="statement not covered" >db</span>
+      .transaction('recycle', 'readwrite')
+      .objectStore('recycle')
+      .add(note);
+<span class="cstat-no" title="statement not covered" >    request.onsuccess = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+      const result = (<span class="cstat-no" title="statement not covered" >ev.target as AppEventTargetIDB).result as any;</span>
+<span class="cstat-no" title="statement not covered" >      resolve(true);</span>
+    };
+<span class="cstat-no" title="statement not covered" >    request.onerror = <span class="fstat-no" title="function not covered" >(e</span>v: Event) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >     reject(new Error(`Add item by id ${note.id} to store recycle cause error ${ev.target}`));</span>
+    };
+  });
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jan 10 2019 13:08:01 GMT+0300 (Moscow Standard Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>
