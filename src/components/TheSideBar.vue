@@ -53,7 +53,6 @@
         :active.sync="activeNotes"
         :open.sync="openedNotebooks"
         :items="notesTree"
-        
         color="primary"
       >
         <template slot="prepend" slot-scope="{ item, open, leaf }">

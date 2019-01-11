@@ -213,12 +213,18 @@ export default class BaseCodeNote extends Vue {
 }
 
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .app-base-note {
   background-color: #333333;
 }
 #app-monaco-editor {
   min-height: 50vh;
+}
+.app-monaco-editor-container {
+    overflow: visible;
+    * {
+        overflow: visible;
+    }
 }
 .v-card__title {
   padding: 3px;

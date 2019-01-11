@@ -1,6 +1,5 @@
 import * as monaco from 'monaco-editor';
 
-
 function setMonacoEnvVariables() {
   (window as any).MonacoEnvironment = {
     getWorkerUrl(moduleId: string, label: any) {
@@ -29,15 +28,6 @@ export function createEditor(selector: string, language: string, mockup: string)
     monacoEditor = monaco.editor.create(viewContainer, {
       value: mockup,
       language,
-      folding: true,
-      hideCursorInOverviewRuler: false,
-      cursorStyle: 'line',
-      cursorWidth: 10,
-      cursorBlinking: 'blink',
-      roundedSelection: true,
-      multiCursorMergeOverlapping: true,
-      selectionHighlight: true,
-      disableLayerHinting: true,
       theme: 'vs-dark',
     });
   } else {

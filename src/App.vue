@@ -5,10 +5,9 @@
     </v-app>
   </div>
 </template>
-<style lang="scss">
+<style>
 * {
   overflow: hidden;
-  caret-color: aliceblue;
 }
 #app {
   font-family: "Roboto", sans-serif;
