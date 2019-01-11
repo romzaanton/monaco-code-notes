@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import AppSideBar from '@/components/TheSideBar.vue';
+import AppSideBar from '@/components/SideBar.vue';
 import AppToolBar from '@/components/TheToolBar.vue';
 
 @Component({

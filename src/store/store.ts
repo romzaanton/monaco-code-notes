@@ -20,7 +20,6 @@ interface NotesTree {
 export interface MainState {
   notebooks: Notebook[] | [];
   notes: Note[] | [];
-  notesTree: NotesTree[] | [];
   recycle: Note[] | [];
   openedNotebook: Notebook | undefined;
   activeNote: Note | undefined;
@@ -82,7 +81,6 @@ export default new Vuex.Store<MainState>({
   state: {
     notebooks: [],
     notes: [],
-    notesTree: [],
     recycle: [],
     openedNotebook: undefined,
     activeNote: undefined,
@@ -97,9 +95,6 @@ export default new Vuex.Store<MainState>({
     setAllRecycleNotes(state: MainState, payload: Note[]) {
       state.recycle = payload;
     },
-    setNotesTree(state: MainState, payload: NotesTree[]) {
-      state.notesTree = payload;
-    },
     deleteNotebook(state: MainState, payload: Notebook) {
       if (state.notebooks.length > 0) {
         state.notebooks = (state.notebooks as Notebook[])
@@ -112,7 +107,6 @@ export default new Vuex.Store<MainState>({
         (state.notes as Note[]).push(state.activeNote);
         const notebooks = (state.notebooks as Notebook[]).map((v) => v);
         const notes = (state.notebooks as Note[]).map((v) => v);
-        state.notesTree =  createNoteTree(notebooks, notes);
       }
     },
     deleteActiveNoteFromStore(state: MainState) {
@@ -186,25 +180,23 @@ export default new Vuex.Store<MainState>({
     },
   },
   actions: {
-    async getNodeTree({state, commit}) {
+    async getAllDataFromIndexedDb({state, commit}) {
       const notebooks = await getAllNotebooks();
       const notes = await getAllNotes();
       const recycle = await getAllRecycleNotes();
-      const notesTree = createNoteTree(notebooks, notes);
       commit('setAllNotebooks', notebooks);
       commit('setAllNotes', notes);
       commit('setAllRecycleNotes', recycle);
-      commit('setNotesTree', notesTree);
     },
     async saveNewNotebook({dispatch}, payload: string) {
       const notebook = await createNewNotebookFromString(payload);
       await saveNotebookToStore(notebook);
-      dispatch('getNodeTree');
+      dispatch('getAllDataFromIndexedDb');
     },
     async deleteNotebook({commit , dispatch}, payload: Notebook) {
       const deleted = await deleteNotebookFromStore(payload);
       if (deleted) {
-        dispatch('getNodeTree');
+        dispatch('getAllDataFromIndexedDb');
       }
     },
     saveNoteActiveToStore({state}) {

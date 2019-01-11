@@ -214,9 +214,6 @@ export default class BaseCodeNote extends Vue {
 
 </script>
 <style lang="scss">
-.app-base-note {
-  background-color: #333333;
-}
 #app-monaco-editor {
   min-height: 50vh;
 }
